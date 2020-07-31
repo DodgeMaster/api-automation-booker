@@ -6,7 +6,7 @@ Feature: Booker-example Feature
     Then  user gets status code "200"
     And   the amount of Booking Ids is "10"
 
-
+  @run
   Scenario: Booking - CreateBooking
     When  the user requests booking with following data:
       | firstname                 | Mike       |
@@ -27,7 +27,7 @@ Feature: Booker-example Feature
       | checkin  | 2020-05-13 |
       | checkout | 2020-05-15 |
 
-
+  @run
   Scenario: Booking - GetBooking
     When  the user requests booking with following data:
       | firstname                 | Mike       |
@@ -51,6 +51,7 @@ Feature: Booker-example Feature
       | checkin  | 2020-05-13 |
       | checkout | 2020-05-15 |
 
+  @run
   Scenario: Booking - UpdateBooking
     Given the user requests token with username "admin" and password "password123"
     When  the user requests booking with following data:
@@ -82,7 +83,7 @@ Feature: Booker-example Feature
       | checkin  | 2020-05-13 |
       | checkout | 2020-05-20 |
 
-
+  @run
   Scenario: Booking - UpdateBooking - Negative
     Given the user requests token with username "admin" and password "password123"
     When  the user requests booking with following data:
@@ -95,7 +96,7 @@ Feature: Booker-example Feature
       | bookingdates --> checkout | 2020-05-15 |
     Then  user gets status code "200"
     # And   the user received one value in path "bookingid" and sets session variable with this name "bookingId"
-    When  the user requests to update booking with following data:
+    When  the user requests to update booking with following data get negative:
       | bookingdates --> checkin  | 2020-05-13 |
       | bookingdates --> checkout | 2020-05-20 |
     Then  user gets status code "400"
@@ -113,7 +114,7 @@ Feature: Booker-example Feature
       | bookingdates --> checkout | 2020-05-15 |
     Then user gets status code "200"
       # And   the user received one value in path "bookingid" and sets session variable with this name "bookingId"
-    When the user requests to update booking with following data:
+    When the user requests to update booking with following partial data:
       | firstname                | Dmitry     |
       | bookingdates --> checkin | 2019-06-06 |
     Then user gets status code "200"

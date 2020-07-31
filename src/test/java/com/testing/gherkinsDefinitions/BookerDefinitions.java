@@ -37,12 +37,24 @@ public class BookerDefinitions {
 
     @When("^the user requests to update booking with following data:$")
     public void theUserRequestsToUpdateBookingWithFollowingData(DataTable dataTable) throws IOException {
-        BookerSteps.partialUpdateBooking(dataTable);
+        BookerSteps.updateBooking(dataTable);
     }
+
 
 
     @When("^the user deletes the booking$")
     public void theUserDeletesTheBooking() {
         BookerSteps.deleteBooking();
+    }
+
+    @When("^the user requests to update booking with following data get negative:$")
+    public void theUserRequestsToUpdateBookingWithFollowingDataGetNegative(DataTable dataTable) throws IOException {
+        BookerSteps.updateBooking(dataTable);
+    }
+
+    @When("^the user requests to update booking with following partial data:$")
+    public void theUserRequestsToUpdateBookingWithFollowingPartialData(DataTable dataTable) throws IOException {
+        BookerSteps.partialUpdateBooking(dataTable);
+
     }
 }
